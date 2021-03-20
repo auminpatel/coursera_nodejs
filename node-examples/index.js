@@ -1,14 +1,19 @@
+
 var rect = require("./rectangle.js")
 
 function solveRect (l,b) {
     console.log(`Solving Rectangle for length l = ${l} and breadth b = ${b}`);
-    if (l<=0  || b<=0) {
-    console.log(`Values should be greater than 0`);
-    }
-    else {
-        console.log(`The area for l = ${l} and b=${b} id ${rect.area(l,b)}`),
-        console.log(`The permiter for l = ${l} and b=${b} id ${rect.permiter(l,b)}`)
-    }
+    rect(l,b, (err,rectangle) => {
+        if(err){
+            console.log("ERROR: ",err.message);
+        }
+
+        else {
+            console.log(`the area of the rectangle of dimensions l = ${l} and breadth b = ${b} is ${rectangle.area()}`);
+            console.log(`the permiter of the rectangle of dimensions l = ${l} and breadth b = ${b} is ${rectangle.permiter()}`)
+        }
+    })
+    console.log("this statment is after the call to rectangle")
 }
 
 
